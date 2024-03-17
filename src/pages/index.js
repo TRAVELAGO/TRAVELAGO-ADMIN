@@ -22,6 +22,8 @@ import WeeklyOverview from 'src/views/dashboard/WeeklyOverview'
 import DepositWithdraw from 'src/views/dashboard/DepositWithdraw'
 import SalesByCountries from 'src/views/dashboard/SalesByCountries'
 
+import { getCookies, setCookie, deleteCookie, getCookie } from 'cookies-next';
+
 const Dashboard = () => {
   return (
     <ApexChartWrapper>
@@ -97,5 +99,19 @@ const Dashboard = () => {
     </ApexChartWrapper>
   )
 }
+
+export const getServerSideProps = ({ req, res }) => {
+  const cookies = getCookie('key1', { req, res });
+  if (!cookies) {
+    return {
+      redirect: {
+        destination: "/pages/login",
+        permanent: false,
+      },
+    };
+  }
+
+  return { props: {} };
+};
 
 export default Dashboard

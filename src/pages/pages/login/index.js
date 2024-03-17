@@ -1,11 +1,7 @@
-// ** React Imports
-import { useState } from 'react'
-
-// ** Next Imports
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-// ** MUI Components
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
@@ -22,7 +18,6 @@ import MuiCard from '@mui/material/Card'
 import InputAdornment from '@mui/material/InputAdornment'
 import MuiFormControlLabel from '@mui/material/FormControlLabel'
 
-// ** Icons Imports
 import Google from 'mdi-material-ui/Google'
 import Github from 'mdi-material-ui/Github'
 import Twitter from 'mdi-material-ui/Twitter'
@@ -30,16 +25,12 @@ import Facebook from 'mdi-material-ui/Facebook'
 import EyeOutline from 'mdi-material-ui/EyeOutline'
 import EyeOffOutline from 'mdi-material-ui/EyeOffOutline'
 
-// ** Configs
 import themeConfig from 'src/configs/themeConfig'
-
-// ** Layout Import
 import BlankLayout from 'src/@core/layouts/BlankLayout'
-
-// ** Demo Imports
 import FooterIllustrationsV1 from 'src/views/pages/auth/FooterIllustration'
 
-// ** Styled Components
+import { getCookies, setCookie, deleteCookie, getCookie } from 'cookies-next';
+
 const Card = styled(MuiCard)(({ theme }) => ({
   [theme.breakpoints.up('sm')]: { width: '28rem' }
 }))
@@ -58,15 +49,17 @@ const FormControlLabel = styled(MuiFormControlLabel)(({ theme }) => ({
 }))
 
 const LoginPage = () => {
-  // ** State
   const [values, setValues] = useState({
     password: '',
     showPassword: false
   })
 
-  // ** Hook
   const theme = useTheme()
   const router = useRouter()
+
+  useEffect(() => {
+    setCookie('key1', 'value');
+  }, [])
 
   const handleChange = prop => event => {
     setValues({ ...values, [prop]: event.target.value })
@@ -78,6 +71,27 @@ const LoginPage = () => {
 
   const handleMouseDownPassword = event => {
     event.preventDefault()
+  }
+
+  const handleLogin = async () => {
+    try {
+      const response = await fetch(`/admin/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: values.email, password: values.password })
+      })
+
+      if (response.status) {
+        setCookie('login', 'true');
+        router.push('/')
+      } else {
+        console.error('Login failed')
+      }
+    } catch (error) {
+      console.error('Login failed', error)
+    }
   }
 
   return (
@@ -200,7 +214,7 @@ const LoginPage = () => {
               size='large'
               variant='contained'
               sx={{ marginBottom: 7 }}
-              onClick={() => router.push('/')}
+              onClick={handleLogin}
             >
               Login
             </Button>
