@@ -12,11 +12,11 @@ const createData = (name, calories, fat, carbs, protein) => {
 }
 
 const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9)
+  createData('Admin@gmail.com', 'admin', '0000000', 'admin'),
+  createData('Admin@gmail.com', 'admin', '0000000', 'admin'),
+  createData('Admin@gmail.com', 'admin', '0000000', 'admin'),
+  createData('Admin@gmail.com', 'admin', '0000000', 'admin'),
+  createData('Admin@gmail.com', 'admin', '0000000', 'admin'),
 ]
 
 const TableBasic = () => {
@@ -25,11 +25,10 @@ const TableBasic = () => {
       <Table sx={{ minWidth: 650 }} aria-label='simple table'>
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align='right'>Calories</TableCell>
-            <TableCell align='right'>Fat (g)</TableCell>
-            <TableCell align='right'>Carbs (g)</TableCell>
-            <TableCell align='right'>Protein (g)</TableCell>
+            <TableCell>Email</TableCell>
+            <TableCell align='right'>Name</TableCell>
+            <TableCell align='right'>Phone</TableCell>
+            <TableCell align='right'>Role</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

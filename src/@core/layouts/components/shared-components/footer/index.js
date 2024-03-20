@@ -1,13 +1,9 @@
-// ** MUI Imports
 import Box from '@mui/material/Box'
 import { useTheme } from '@mui/material/styles'
 
-// ** Footer Content Component
-import FooterContent from './FooterContent'
-
 const Footer = props => {
   // ** Props
-  const { settings, footerContent: userFooterContent } = props
+  const { settings } = props
 
   // ** Hook
   const theme = useTheme()
@@ -36,7 +32,6 @@ const Footer = props => {
           ...(contentWidth === 'boxed' && { '@media (min-width:1440px)': { maxWidth: 1440 } })
         }}
       >
-        {userFooterContent ? userFooterContent(props) : <FooterContent />}
       </Box>
     </Box>
   )
