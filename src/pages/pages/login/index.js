@@ -18,12 +18,7 @@ import MuiCard from '@mui/material/Card'
 import InputAdornment from '@mui/material/InputAdornment'
 import MuiFormControlLabel from '@mui/material/FormControlLabel'
 
-import Google from 'mdi-material-ui/Google'
-import Github from 'mdi-material-ui/Github'
-import Twitter from 'mdi-material-ui/Twitter'
-import Facebook from 'mdi-material-ui/Facebook'
-import EyeOutline from 'mdi-material-ui/EyeOutline'
-import EyeOffOutline from 'mdi-material-ui/EyeOffOutline'
+import { Google, Github, Twitter, Facebook,EyeOutline,EyeOffOutline} from 'mdi-material-ui'
 
 import themeConfig from 'src/configs/themeConfig'
 import BlankLayout from 'src/@core/layouts/BlankLayout'
@@ -57,10 +52,6 @@ const LoginPage = () => {
   const theme = useTheme()
   const router = useRouter()
 
-  useEffect(() => {
-    setCookie('key1', 'value');
-  }, [])
-
   const handleChange = prop => event => {
     setValues({ ...values, [prop]: event.target.value })
   }
@@ -82,7 +73,7 @@ const LoginPage = () => {
         },
         body: JSON.stringify({ email: values.email, password: values.password })
       })
-
+      console.log(response);
       if (response.status) {
         setCookie('login', 'true');
         router.push('/')
