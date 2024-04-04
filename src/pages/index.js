@@ -95,7 +95,7 @@ const Dashboard = () => {
 }
 
 export const getServerSideProps = ({ req, res }) => {
-  const cookies = getCookie('key1', { req, res });
+  const cookies = getCookie('login', { req, res });
   if (!cookies) {
     return {
       redirect: {
