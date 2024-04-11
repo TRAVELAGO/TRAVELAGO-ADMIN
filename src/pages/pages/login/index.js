@@ -66,16 +66,16 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch(`${process.env.SERVER_URL}/admin/login`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ email: values.email, password: values.password })
       })
-      console.log(response);
-      response.status = true;
-      if (true) {
+      const responseJson = await response.json();
+      console.log(responseJson)
+      if (responseJson.status) {
         setCookie('login', 'true');
         router.push('/')
       } else {

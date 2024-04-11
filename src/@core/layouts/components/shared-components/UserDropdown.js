@@ -23,6 +23,8 @@ import AccountOutline from 'mdi-material-ui/AccountOutline'
 import MessageOutline from 'mdi-material-ui/MessageOutline'
 import HelpCircleOutline from 'mdi-material-ui/HelpCircleOutline'
 
+import { getCookies, setCookie, deleteCookie, getCookie } from 'cookies-next';
+
 // ** Styled Components
 const BadgeContentSpan = styled('span')(({ theme }) => ({
   width: 8,
@@ -47,6 +49,14 @@ const UserDropdown = () => {
     if (url) {
       router.push(url)
     }
+    setAnchorEl(null)
+  }
+
+  const handleSignOut = url => {
+    if (url) {
+      router.push(url)
+    }
+    deleteCookie('login');
     setAnchorEl(null)
   }
 
@@ -144,7 +154,7 @@ const UserDropdown = () => {
           </Box>
         </MenuItem>
         <Divider />
-        <MenuItem sx={{ py: 2 }} onClick={() => handleDropdownClose('/pages/login')}>
+        <MenuItem sx={{ py: 2 }} onClick={() => handleSignOut('/pages/login')}>
           <LogoutVariant sx={{ marginRight: 2, fontSize: '1.375rem', color: 'text.secondary' }} />
           Logout
         </MenuItem>

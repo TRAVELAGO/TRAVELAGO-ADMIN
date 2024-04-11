@@ -1,0 +1,113 @@
+import { Button,Paper, Table, TableRow, TableHead, TableBody, TableCell, TableContainer, Skeleton } from '@mui/material';
+
+const UserTable = ({ users, onStatusChange }) => {
+  const handleStatusChange = (userId, newStatus) => {
+    onStatusChange(userId, newStatus);
+  };
+  if (!users || users.length === 0) {
+    return (
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label='simple table'>
+          <TableHead>
+            <TableRow>
+              <TableCell>
+                <Skeleton variant="text" width={100} />
+              </TableCell>
+              <TableCell align='right'>
+                <Skeleton variant="text" width={100} />
+              </TableCell>
+              <TableCell align='right'>
+                <Skeleton variant="text" width={100} />
+              </TableCell>
+              <TableCell align='right'>
+                <Skeleton variant="text" width={100} />
+              </TableCell>
+              <TableCell align='right'>
+                <Skeleton variant="text" width={100} />
+              </TableCell>
+              <TableCell align='right'>
+                <Skeleton variant="text" width={100} />
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {[1, 2, 3, 4, 5].map((row, index) => (
+              <TableRow key={index}>
+                <TableCell>
+                  <Skeleton variant="text" />
+                </TableCell>
+                <TableCell align='right'>
+                  <Skeleton variant="text" />
+                </TableCell>
+                <TableCell align='right'>
+                  <Skeleton variant="text" />
+                </TableCell>
+                <TableCell align='right'>
+                  <Skeleton variant="text" />
+                </TableCell>
+                <TableCell align='right'>
+                  <Skeleton variant="text" />
+                </TableCell>
+                <TableCell align='right'>
+                  <Skeleton variant="text" />
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    );
+  }
+
+  return (
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label='simple table'>
+        <TableHead>
+          <TableRow>
+            <TableCell>Email</TableCell>
+            <TableCell align='right'>Name</TableCell>
+            <TableCell align='right'>Phone</TableCell>
+            <TableCell align='right'>Role</TableCell>
+            <TableCell align='right'>Address</TableCell>
+            <TableCell align='right'>Status</TableCell>
+            <TableCell align='right'>Action</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {users.map(row => (
+            <TableRow
+              key={row.id}
+              sx={{
+                '&:last-of-type td, &:last-of-type th': {
+                  border: 0
+                }
+              }}
+            >
+              <TableCell component='th' scope='row'>
+                {row.email}
+              </TableCell>
+              <TableCell align='right'>{row.fullName}</TableCell>
+              <TableCell align='right'>{row.phoneNumber}</TableCell>
+              <TableCell align='right'>{row.role}</TableCell>
+              <TableCell align='right'>{row.address}</TableCell> 
+              <TableCell align='right'>{row.status}</TableCell>
+              <TableCell align='right'>
+                <Button        
+                  variant='outlined'
+                  color={row.status === 1 ? 'secondary' : 'primary'}
+                  onClick={() =>
+                    handleStatusChange(row.id, row.status === 1 ? 0 : 1)
+                  }
+                >
+                  Change Status
+                </Button>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+}
+
+export default UserTable;

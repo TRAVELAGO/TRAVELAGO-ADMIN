@@ -17,13 +17,13 @@ const navigation = () => {
       icon: HomeOutline,
       path: '/'
     },
+    // {
+    //   title: 'Account Settings',
+    //   icon: AccountCogOutline,
+    //   path: '/account-settings'
+    // },
     {
-      title: 'Account Settings',
-      icon: AccountCogOutline,
-      path: '/account-settings'
-    },
-    {
-      sectionTitle: 'Pages'
+      sectionTitle: 'Manager'
     },
     // {
     //   title: 'Login',
@@ -46,7 +46,7 @@ const navigation = () => {
     {
       title: 'User',
       icon: Table,
-      path: '/tables'
+      path: '/users'
     },
     // {
     //   sectionTitle: 'User Interface'
