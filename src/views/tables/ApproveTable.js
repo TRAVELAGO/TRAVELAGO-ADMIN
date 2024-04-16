@@ -1,13 +1,13 @@
-import { Button, Paper, Table, TableRow, TableHead, TableBody, TableCell, TableContainer, Card, CardHeader } from '@mui/material';
+import { Button, Paper, Table, TableRow, TableHead, TableBody, TableCell, TableContainer, CardHeader, Card } from '@mui/material';
 
-const UserTable = ({ users, onStatusChange }) => {
+const ApproveTable = ({ users, onStatusChange }) => {
   const handleStatusChange = (userId, newStatus) => {
     onStatusChange(userId, newStatus);
   };
   if (!users || users.length === 0) {
     return (
       <Card>
-        <CardHeader title='No users' titleTypographyProps={{ variant: 'h6' }} />
+        <CardHeader title='No accounts for approval' titleTypographyProps={{ variant: 'h6' }} />
       </Card>
     );
   }
@@ -52,7 +52,7 @@ const UserTable = ({ users, onStatusChange }) => {
                     handleStatusChange(row.id, row.status === 1 ? 0 : 1)
                   }
                 >
-                  Change Status
+                  Approve
                 </Button>
               </TableCell>
             </TableRow>
@@ -63,4 +63,4 @@ const UserTable = ({ users, onStatusChange }) => {
   );
 }
 
-export default UserTable;
+export default ApproveTable;

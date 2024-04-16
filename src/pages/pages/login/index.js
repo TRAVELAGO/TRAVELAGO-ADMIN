@@ -45,6 +45,7 @@ const FormControlLabel = styled(MuiFormControlLabel)(({ theme }) => ({
 
 const LoginPage = () => {
   const [values, setValues] = useState({
+    email: '',
     password: '',
     showPassword: false
   })
@@ -74,7 +75,6 @@ const LoginPage = () => {
         body: JSON.stringify({ email: values.email, password: values.password })
       })
       const responseJson = await response.json();
-      console.log(responseJson)
       if (responseJson.status) {
         setCookie('login', 'true');
         router.push('/')
@@ -169,7 +169,7 @@ const LoginPage = () => {
             </Typography>
           </Box>
           <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()}>
-            <TextField autoFocus fullWidth id='email' label='Email' sx={{ marginBottom: 4 }} />
+            <TextField autoFocus fullWidth id='email' label='Email' sx={{ marginBottom: 4 }} onChange={handleChange('email')} value={values.email} />
             <FormControl fullWidth>
               <InputLabel htmlFor='auth-login-password'>Password</InputLabel>
               <OutlinedInput

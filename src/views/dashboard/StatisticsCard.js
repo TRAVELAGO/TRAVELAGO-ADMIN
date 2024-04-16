@@ -13,11 +13,11 @@ import TrendingUp from 'mdi-material-ui/TrendingUp'
 import DotsVertical from 'mdi-material-ui/DotsVertical'
 import AccountOutline from 'mdi-material-ui/AccountOutline'
 
-const StatisticsCard = ({totalUserThisMonth}) => {
+const StatisticsCard = ({totalUserThisMonth, totalSaleThisMonth}) => {
   const renderStats = () => {
     const salesData = [
       {
-        stats: '245k',
+        stats: totalSaleThisMonth + '$',
         title: 'Sales',
         color: 'primary',
         icon: <TrendingUp sx={{ fontSize: '1.75rem' }} />

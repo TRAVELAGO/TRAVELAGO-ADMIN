@@ -1,23 +1,16 @@
 
 import { useState, useEffect } from 'react'
 import Grid from '@mui/material/Grid'
-import Poll from 'mdi-material-ui/Poll'
 import HotelIcon from '@mui/icons-material/Hotel';
 import AccountOutline from 'mdi-material-ui/AccountOutline'
-import HelpCircleOutline from 'mdi-material-ui/HelpCircleOutline'
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-import BriefcaseVariantOutline from 'mdi-material-ui/BriefcaseVariantOutline'
 import CurrencyUsd from 'mdi-material-ui/CurrencyUsd'
 import CardStatisticsVerticalComponent from 'src/@core/components/card-statistics/card-stats-vertical'
 import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
-import Table from 'src/views/dashboard/Table'
 import Trophy from 'src/views/dashboard/Trophy'
-import TotalEarning from 'src/views/dashboard/TotalEarning'
 import StatisticsCard from 'src/views/dashboard/StatisticsCard'
-import WeeklyOverview from 'src/views/dashboard/WeeklyOverview'
-import DepositWithdraw from 'src/views/dashboard/DepositWithdraw'
-import SalesByCountries from 'src/views/dashboard/SalesByCountries'
-import { getCookies, setCookie, deleteCookie, getCookie } from 'cookies-next';
+import WeeklyOverview from 'src/views/dashboard/SalesChart'
+import { getCookie } from 'cookies-next';
 
 const Dashboard = () => {
   const [totalHotel, setToTalHotel] = useState(0);
@@ -92,7 +85,7 @@ const Dashboard = () => {
             trend='negative'
             //trendNumber='-18%'
             subtitle='Total'
-            title='Total Sale'
+            title='Total Sales'
             icon={<CurrencyUsd />}
           />
         </Grid>
@@ -131,20 +124,7 @@ const Dashboard = () => {
           <Trophy totalSaleThisMonth={totalSaleThisMonth} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <StatisticsCard totalUserThisMonth={totalUserThisMonth} />
-        </Grid>
-        <Grid item xs={12} md={6} lg={4}>
-          <WeeklyOverview />
-        </Grid>
-        <Grid item xs={12} md={6} lg={4}>
-          <TotalEarning />
-        </Grid>
-
-        <Grid item xs={12} md={6} lg={4}>
-          <SalesByCountries />
-        </Grid>
-        <Grid item xs={12} md={12} lg={8}>
-          <DepositWithdraw />
+          <StatisticsCard totalUserThisMonth={totalUserThisMonth} totalSaleThisMonth={totalSaleThisMonth} />
         </Grid>
       </Grid>
     </ApexChartWrapper>

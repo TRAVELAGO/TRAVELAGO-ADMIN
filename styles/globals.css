@@ -22,3 +22,7 @@ code:not([class*='language-']):after {
 code[class*='language-'] {
   padding: 0;
 }
+
+.layout-page-content {
+  background-color: #ebebf3;
+}
