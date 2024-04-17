@@ -26,3 +26,9 @@ code[class*='language-'] {
 .layout-page-content {
   background-color: #ebebf3;
 }
+
+.content-center {
+  background-image: url('/images/logos/LOGO_APP.png');
+  background-size: cover;
+  background-position: center;
+}
