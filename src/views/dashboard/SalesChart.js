@@ -6,21 +6,24 @@ import DotsVertical from 'mdi-material-ui/DotsVertical'
 
 import ReactApexcharts from 'src/@core/components/react-apexcharts'
 
-const SalesChart = () => {
-
+const SalesChart = ({ saleData }) => {
   const options = {
     chart: {
       id: "basic-bar"
     },
     xaxis: {
-      categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+      categories: saleData.map(data => {
+        if (data.date == 'No data') return 'No data';
+        const dateObj = new Date(data.date);
+        return `${dateObj.getDate()}/${dateObj.getMonth() + 1}/${dateObj.getFullYear()}`;
+      })
     }
   }
 
   return (
     <Card>
       <CardHeader
-        title='Total sales'
+        title='Sales'
         titleTypographyProps={{
           sx: { lineHeight: '2rem !important', letterSpacing: '0.15px !important' }
         }}
@@ -31,7 +34,7 @@ const SalesChart = () => {
         }
       />
 
-      <ReactApexcharts type='bar' options={options} series={[{ data: [37, 57, 45, 75, 57, 40, 65] }]} />
+      <ReactApexcharts type='bar' options={options} series={[{ data: saleData.map(data => data.totalAmount) }]} />
 
     </Card>
   )

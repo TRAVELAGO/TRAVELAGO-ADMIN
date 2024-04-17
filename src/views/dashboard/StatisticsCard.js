@@ -1,4 +1,3 @@
-// ** MUI Imports
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
@@ -8,7 +7,6 @@ import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
-// ** Icons Imports
 import TrendingUp from 'mdi-material-ui/TrendingUp'
 import DotsVertical from 'mdi-material-ui/DotsVertical'
 import AccountOutline from 'mdi-material-ui/AccountOutline'
@@ -56,7 +54,7 @@ const StatisticsCard = ({totalUserThisMonth, totalSaleThisMonth}) => {
   return (
     <Card>
       <CardHeader
-        title='Statistics Card'
+        title='Total growth this month'
         action={
           <IconButton size='small' aria-label='settings' className='card-more-options' sx={{ color: 'text.secondary' }}>
             <DotsVertical />
@@ -64,10 +62,7 @@ const StatisticsCard = ({totalUserThisMonth, totalSaleThisMonth}) => {
         }
         subheader={
           <Typography variant='body2'>
-            <Box component='span' sx={{ fontWeight: 600, color: 'text.primary' }}>
-              Total growth
-            </Box>{' '}
-            😎 this month
+             Sale and Customers
           </Typography>
         }
         titleTypographyProps={{

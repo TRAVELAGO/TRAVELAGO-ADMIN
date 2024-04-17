@@ -6,14 +6,18 @@ import DotsVertical from 'mdi-material-ui/DotsVertical'
 
 import ReactApexcharts from 'src/@core/components/react-apexcharts'
 
-const PaymentsChart = () => {
+const UserChart = ({ userData }) => {
 
     const options = {
         chart: {
             id: "basic-bar"
         },
         xaxis: {
-            categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+            categories: userData.map(data => {
+                if (data.date == 'No data') return 'No data';
+                const dateObj = new Date(data.date);
+                return `${dateObj.getDate()}/${dateObj.getMonth() + 1}/${dateObj.getFullYear()}`;
+            })
         }
     }
 
@@ -21,7 +25,7 @@ const PaymentsChart = () => {
 
         <Card>
             <CardHeader
-                title='Total payments'
+                title='User'
                 titleTypographyProps={{
                     sx: { lineHeight: '2rem !important', letterSpacing: '0.15px !important' }
                 }}
@@ -33,7 +37,7 @@ const PaymentsChart = () => {
             />
             <ReactApexcharts
                 options={options}
-                series={[{ data: [37, 57, 45, 75, 57, 40, 65] }]}
+                series={[{ data: userData.map(data => data.count) }]}
                 type="line"
             />
         </Card>
@@ -41,4 +45,4 @@ const PaymentsChart = () => {
     )
 }
 
-export default PaymentsChart
+export default UserChart

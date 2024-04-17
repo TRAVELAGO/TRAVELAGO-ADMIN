@@ -1,4 +1,4 @@
-import { CheckDecagram, HomeOutline, Table, AlertBox, ChartAreaspline  } from 'mdi-material-ui'
+import { CheckDecagram, HomeOutline, Table, AlertBox, ChartAreaspline, Sale } from 'mdi-material-ui'
 
 const navigation = () => {
   return [
@@ -35,6 +35,14 @@ const navigation = () => {
       title: 'Report Feedback',
       icon: AlertBox,
       path: '/report'
+    },
+    {
+      sectionTitle: 'Voucher Manage'
+    },
+    {
+      title: 'Voucher',
+      icon: Sale,
+      path: '/voucher'
     },
   ]
 }

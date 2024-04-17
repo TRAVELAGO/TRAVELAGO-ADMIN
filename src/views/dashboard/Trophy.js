@@ -33,9 +33,9 @@ const Trophy = ({totalSaleThisMonth}) => {
   return (
     <Card sx={{ position: 'relative' }}>
       <CardContent>
-        <Typography variant='h6'>Congratulations Admin! 🥳</Typography>
+        <Typography variant='h6'> Sale of the month</Typography>
         <Typography variant='body2' sx={{ letterSpacing: '0.25px' }}>
-          Sale of the month
+          Total
         </Typography>
         <Typography variant='h5' sx={{ my: 4, color: 'primary.main' }}>
         {'$' + totalSaleThisMonth} 

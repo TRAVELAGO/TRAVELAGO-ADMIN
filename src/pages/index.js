@@ -78,7 +78,7 @@ const Dashboard = () => {
   return (
     <ApexChartWrapper>
       <Grid container spacing={6}>
-        <Grid item xs={12} md={3} lg={3}>
+        <Grid item xs={12} md={6} lg={6}>
           <CardStatisticsVerticalComponent
             stats={'$' + totalSale}
             color='warning'
@@ -89,7 +89,7 @@ const Dashboard = () => {
             icon={<CurrencyUsd />}
           />
         </Grid>
-        <Grid item xs={12} md={3} lg={3}>
+        <Grid item xs={12} md={6} lg={6}>
           <CardStatisticsVerticalComponent
             stats={totalUser}
             icon={<AccountOutline />}
@@ -99,7 +99,7 @@ const Dashboard = () => {
             subtitle='Total'
           />
         </Grid>
-        <Grid item xs={12} md={3} lg={3}>
+        <Grid item xs={12} md={6} lg={6}>
           <CardStatisticsVerticalComponent
             stats={totalHotel}
             title='Total Hotel'
@@ -110,7 +110,7 @@ const Dashboard = () => {
             icon={<HotelIcon />}
           />
         </Grid>
-        <Grid item xs={12} md={3} lg={3}>
+        <Grid item xs={12} md={6} lg={6}>
           <CardStatisticsVerticalComponent
             stats={totalBooking}
             trend='negative'

@@ -107,7 +107,7 @@ const LoginPage = () => {
           </Box>
           <Box sx={{ mb: 6 }}>
             <Typography variant='h5' sx={{ fontWeight: 600, marginBottom: 1.5 }}>
-              Welcome to {themeConfig.templateName}! 👋🏻
+              Welcome to Travelago
             </Typography>
           </Box>
           <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()}>
@@ -138,9 +138,6 @@ const LoginPage = () => {
               sx={{ mb: 4, display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-between' }}
             >
               <FormControlLabel control={<Checkbox />} label='Remember Me' />
-              <Link passHref href='/'>
-                <LinkStyled onClick={e => e.preventDefault()}>Forgot Password?</LinkStyled>
-              </Link>
             </Box>
             <Button
               fullWidth
@@ -151,16 +148,6 @@ const LoginPage = () => {
             >
               Login
             </Button>
-            <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
-              <Typography variant='body2' sx={{ marginRight: 2 }}>
-                New on our platform?
-              </Typography>
-              <Typography variant='body2'>
-                <Link passHref href='/pages/register'>
-                  <LinkStyled>Create an account</LinkStyled>
-                </Link>
-              </Typography>
-            </Box>
           </form>
         </CardContent>
       </Card>

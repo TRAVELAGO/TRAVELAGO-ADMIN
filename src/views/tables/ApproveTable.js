@@ -1,4 +1,4 @@
-import { Button, Paper, Table, TableRow, TableHead, TableBody, TableCell, TableContainer, CardHeader, Card } from '@mui/material';
+import { Button, Paper, Table, TableRow, TableHead, TableBody, TableCell, TableContainer, CardHeader, Card, Chip } from '@mui/material';
 
 const ApproveTable = ({ users, onStatusChange }) => {
   const handleStatusChange = (userId, newStatus) => {
@@ -41,9 +41,15 @@ const ApproveTable = ({ users, onStatusChange }) => {
               </TableCell>
               <TableCell align='right'>{row.fullName}</TableCell>
               <TableCell align='right'>{row.phoneNumber}</TableCell>
-              <TableCell align='right'>{row.role}</TableCell>
+              <TableCell align='right'> <Chip
+                label={row.role}
+                color={row.role === 'USER' ? 'default' : 'info'}
+              /></TableCell>
               <TableCell align='right'>{row.address}</TableCell>
-              <TableCell align='right'>{row.status}</TableCell>
+              <TableCell align='right'><Chip
+                label={row.status === 1 ? 'Active' : 'Inactive'}
+                color={row.status === 1 ? 'primary' : 'secondary'}
+              /></TableCell>
               <TableCell align='right'>
                 <Button
                   variant='outlined'
