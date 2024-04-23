@@ -18,11 +18,10 @@ import MuiCard from '@mui/material/Card'
 import InputAdornment from '@mui/material/InputAdornment'
 import MuiFormControlLabel from '@mui/material/FormControlLabel'
 
-import { Google, Github, Twitter, Facebook,EyeOutline,EyeOffOutline} from 'mdi-material-ui'
+import { EyeOutline,EyeOffOutline} from 'mdi-material-ui'
 
 import themeConfig from 'src/configs/themeConfig'
 import BlankLayout from 'src/@core/layouts/BlankLayout'
-import FooterIllustrationsV1 from 'src/views/pages/auth/FooterIllustration'
 
 import { getCookies, setCookie, deleteCookie, getCookie } from 'cookies-next';
 
@@ -75,8 +74,10 @@ const LoginPage = () => {
         body: JSON.stringify({ email: values.email, password: values.password })
       })
       const responseJson = await response.json();
+      console.log(responseJson);
       if (responseJson.status) {
         setCookie('login', 'true');
+        setCookie('accessToken', responseJson.accessToken);
         router.push('/')
       } else {
         console.error('Login failed')
