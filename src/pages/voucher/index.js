@@ -100,7 +100,7 @@ const Voucher = () => {
         </Grid>
         <Grid item xs={12}>
           <Card>
-            <CardHeader title='Approve' titleTypographyProps={{ variant: 'h6' }} />
+            <CardHeader title='Voucher' titleTypographyProps={{ variant: 'h6' }} />
             <VoucherTable vouchers={filteredVouchers} onDelete={handleDelete} />
           </Card>
         </Grid>
