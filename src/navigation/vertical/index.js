@@ -3,9 +3,6 @@ import { CheckDecagram, HomeOutline, Table, AlertBox, ChartAreaspline, Sale } fr
 const navigation = () => {
   return [
     {
-      sectionTitle: 'Analytics'
-    },
-    {
       title: 'Overview',
       icon: HomeOutline,
       path: '/'

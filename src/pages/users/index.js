@@ -1,17 +1,14 @@
 import { useState, useEffect } from 'react'
 
-import Grid from '@mui/material/Grid'
-import Link from '@mui/material/Link'
-import Card from '@mui/material/Card'
-import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import Snackbar from '@mui/material/Snackbar';
+import { TextField, Grid, Link, Card, Typography, CardHeader, Snackbar, Box } from '@mui/material'
 
 import UserTable from 'src/views/tables/UserTable'
 
 const MUITable = () => {
   const [users, setUsers] = useState([]);
   const [open, setOpen] = useState(false);
+  const [searchText, setSearchText] = useState('');
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,6 +60,18 @@ const MUITable = () => {
     }
   };
 
+  const handleSearchChange = (event) => {
+    setSearchText(event.target.value.toLowerCase());
+  };
+
+  const filteredUsers = users.filter((user) => {
+    const searchTextLower = searchText.toLowerCase();
+    return (
+      user?.name?.toLowerCase().includes(searchTextLower) ||
+      user?.email?.toLowerCase().includes(searchTextLower)
+    );
+  });
+
   return (
     <><Snackbar
       open={open}
@@ -77,11 +86,21 @@ const MUITable = () => {
             </Link>
           </Typography>
           <Typography variant='body2'>Tables display sets of data</Typography>
+          <Box sx={{ marginBottom: 2, marginTop: 10, width: 150, }} display="flex"
+            alignItems="center">
+            <TextField
+              label="Search Users"
+
+              value={searchText}
+              onChange={handleSearchChange}
+              fullWidth
+            />
+          </Box>
         </Grid>
         <Grid item xs={12}>
           <Card>
             <CardHeader title='User Table' titleTypographyProps={{ variant: 'h6' }} />
-            <UserTable users={users} onStatusChange={handleStatusChange} />
+            <UserTable users={filteredUsers} onStatusChange={handleStatusChange} />
           </Card>
         </Grid>
       </Grid></>

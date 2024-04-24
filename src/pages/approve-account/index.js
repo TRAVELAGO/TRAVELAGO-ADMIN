@@ -6,12 +6,15 @@ import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import Snackbar from '@mui/material/Snackbar';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 import ApproveTable from 'src/views/tables/ApproveTable'
 
 const ApproveAccount = () => {
   const [users, setUsers] = useState([]);
   const [open, setOpen] = useState(false);
+  const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,6 +61,18 @@ const ApproveAccount = () => {
     }
   };
 
+  const handleSearchChange = (event) => {
+    setSearchText(event.target.value.toLowerCase());
+  };
+
+  const filteredUsers = users.filter((user) => {
+    const searchTextLower = searchText.toLowerCase();
+    return (
+      user?.name?.toLowerCase().includes(searchTextLower) ||
+      user?.email?.toLowerCase().includes(searchTextLower)
+    );
+  });
+
   return (
     <><Snackbar
       open={open}
@@ -67,14 +82,24 @@ const ApproveAccount = () => {
     /><Grid container spacing={6}>
         <Grid item xs={12}>
           <Typography variant='h5'>
-              Approve Account
+            Approve Account
           </Typography>
           <Typography variant='body2'>Tables of hotel owner wait for approve</Typography>
+          <Box sx={{ marginBottom: 2, marginTop: 10, width: 150, }} display="flex"
+            alignItems="center">
+            <TextField
+              label="Search Users"
+
+              value={searchText}
+              onChange={handleSearchChange}
+              fullWidth
+            />
+          </Box>
         </Grid>
         <Grid item xs={12}>
           <Card>
             <CardHeader title='Approve' titleTypographyProps={{ variant: 'h6' }} />
-            <ApproveTable users={users} onStatusChange={handleStatusChange} />
+            <ApproveTable users={filteredUsers} onStatusChange={handleStatusChange} />
           </Card>
         </Grid>
       </Grid></>

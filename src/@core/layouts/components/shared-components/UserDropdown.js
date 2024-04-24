@@ -87,7 +87,7 @@ const UserDropdown = () => {
           alt='Admin'
           onClick={handleDropdownOpen}
           sx={{ width: 40, height: 40 }}
-          src='/images/avatars/1.png'
+          src='/images/logos/LOGO_APP.png'
         />
       </Badge>
       <Menu
